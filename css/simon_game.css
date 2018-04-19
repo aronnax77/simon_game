@@ -1,0 +1,91 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  width: 32vw;
+  height: 32vw;
+  margin: 5vw auto;
+}
+
+.inner {
+  float: left;
+  width: 16vw;
+  height: 16vw;
+}
+
+.top-left {
+  background-color: #00a74a;
+  border-radius: 100% 0 0 0;
+  border-left: 1vw solid #000;
+  border-top: 1vw solid #000;
+  border-right: 0.5vw solid #000;
+  border-bottom: 0.5vw solid #000;
+}
+
+.top-right {
+  background-color: #9f0f17;
+  border-radius: 0 100% 0 0;
+  border-left: 0.5vw solid #000;
+  border-top: 1vw solid #000;
+  border-right: 1vw solid #000;
+  border-bottom: 0.5vw solid #000;
+}
+
+.bottom-left {
+  background-color: #cca707;
+  border-radius: 0 0 0 100%;
+  border-left: 1vw solid #000;
+  border-top: 0.5vw solid #000;
+  border-right: 0.5vw solid #000;
+  border-bottom: 1vw solid #000;
+}
+
+.bottom-right {
+  background-color: #094a8f;
+  border-radius: 0 0 100% 0;
+  border-left: 0.5vw solid #000;
+  border-top: 0.5vw solid #000;
+  border-right: 1vw solid #000;
+  border-bottom: 1vw solid #000;
+}
+
+.game-panel {
+  position: absolute;
+  top: 8vw;
+  left: 8vw;
+  background-color: #ddd;
+  width: 16vw;
+  height: 16vw;
+  border-radius: 100%;
+  border: 0.5vw solid #000;
+}
+
+@media only screen and (max-width:1200px) {
+  /* For mobile phones: */
+  .container {
+    width: 60vw;
+    height: 60vw;
+  }
+
+  .inner {
+    width: 30vw;
+    height: 30vw;
+  }
+}
+
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+  .container {
+    width: 100vw;
+    height: 100vw;
+  }
+
+  .inner {
+    width: 50vw;
+    height: 50vw;
+  }
+}
