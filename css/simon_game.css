@@ -18,7 +18,6 @@
 }
 
 .top-left {
-  background-color: #00a74a;
   border-radius: 100% 0 0 0;
   border-left: 1vw solid #000;
   border-top: 1vw solid #000;
@@ -27,7 +26,6 @@
 }
 
 .top-right {
-  background-color: #9f0f17;
   border-radius: 0 100% 0 0;
   border-left: 0.5vw solid #000;
   border-top: 1vw solid #000;
@@ -36,7 +34,6 @@
 }
 
 .bottom-left {
-  background-color: #cca707;
   border-radius: 0 0 0 100%;
   border-left: 1vw solid #000;
   border-top: 0.5vw solid #000;
@@ -45,7 +42,6 @@
 }
 
 .bottom-right {
-  background-color: #094a8f;
   border-radius: 0 0 100% 0;
   border-left: 0.5vw solid #000;
   border-top: 0.5vw solid #000;
