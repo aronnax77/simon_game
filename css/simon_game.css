@@ -1,14 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Faster+One');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+body {
+  background-color: #ddd;
+}
+
+.title {
+  text-align: center;
+  padding: 20px;
+  color: #9f0f17;
+  font-size: 1.5vw;
+  font-family: 'Faster One', cursive;
+}
+
 .container {
   position: relative;
   width: 32vw;
   height: 32vw;
-  margin: 5vw auto;
+  margin: 1.5vw auto;
 }
 
 .inner {

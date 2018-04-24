@@ -9,25 +9,30 @@
 </head>
 <body>
 
+  <!-- give our application a title -->
+  <div class="title">
+    <h1>Simon Game</h1>
+  </div>
+
   <!-- set up the Vue application -->
   <div id="simon-app" class="container">
 
     <!-- display the four light pads with default background colours -->
     <light-pad :bg="bg1"
                class="top-left inner"
-               @user="handleUser(1)">
+               @user="activatePad(1)">
                </light-pad>
     <light-pad :bg="bg2"
                class="top-right inner"
-               @user="handleUser(2)">
+               @user="activatePad(2)">
                </light-pad>
     <light-pad :bg="bg3"
                class="bottom-left inner"
-               @user="handleUser(3)">
+               @user="activatePad(3)">
                </light-pad>
     <light-pad :bg="bg4"
                class="bottom-right inner"
-               @user="handleUser(4)">
+               @user="activatePad(4)">
                </light-pad>
 
     <div class="game-panel"></div>
