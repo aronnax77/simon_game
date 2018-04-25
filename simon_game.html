@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="css/simon_game.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,22 +21,34 @@
     <!-- display the four light pads with default background colours -->
     <light-pad :bg="bg1"
                class="top-left inner"
-               @user="activatePad(1)">
+               @user="userActivatePad(1)">
                </light-pad>
     <light-pad :bg="bg2"
                class="top-right inner"
-               @user="activatePad(2)">
+               @user="userActivatePad(2)">
                </light-pad>
     <light-pad :bg="bg3"
                class="bottom-left inner"
-               @user="activatePad(3)">
+               @user="userActivatePad(3)">
                </light-pad>
     <light-pad :bg="bg4"
                class="bottom-right inner"
-               @user="activatePad(4)">
+               @user="userActivatePad(4)">
                </light-pad>
 
-    <div class="game-panel"></div>
+    <div class="game-panel">
+      <div class="game-panel-top">
+        <div class="game-panel-counter">{{ counter }}</div>
+      </div>
+      <div class="game-panel-bottom">
+        <div class="game-panel-start">
+          <button class="start-button">Start</button>
+        </div>
+        <div class="game-panel-settings">
+          <i class="material-icons md-48">settings</i>
+        </div>
+      </div>
+    </div>
 
   </div>
 

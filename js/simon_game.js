@@ -2,6 +2,8 @@ var snd1 = new Audio("audio/simonSound1.mp3");
 var snd2 = new Audio("audio/simonSound2.mp3");
 var snd3 = new Audio("audio/simonSound3.mp3");
 var snd4 = new Audio("audio/simonSound4.mp3");
+var snd5 = new Audio("audio/pipe9.wav");
+var snd6 = new Audio("audio/record-scratch-short.wav");
 
 
 var LightPad = {
@@ -13,6 +15,7 @@ var main = new Vue({
   el: "#simon-app",
   data: {
     duration: 2000,
+    counter: 20,
     bg1: "#00a74a", // #2fc170
     bg2: "#9f0f17", // #c7202a
     bg3: "#cca707", // #e5c01f
@@ -22,6 +25,12 @@ var main = new Vue({
     "light-pad": LightPad
   },
   methods: {
+    userActivatePad: function(pad) {
+      var temp = this.duration;
+      this.duration = 200;
+      this.activatePad(pad);
+      this.duration = temp;
+    },
     activatePad: function(pad) {
       switch(pad) {
         case 1:
@@ -55,3 +64,5 @@ var main = new Vue({
     }
   }
 });
+
+//snd6.play();

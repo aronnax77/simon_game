@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Faster+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
 
 * {
   padding: 0;
@@ -73,6 +74,54 @@ body {
   border-radius: 100%;
   border: 0.5vw solid #000;
 }
+
+.game-panel-top {
+  display: flex;
+  justify-content: center;
+  width: 16vw;
+  height: 8vw;
+  border: 2px solid red;
+}
+
+.game-panel-counter {
+  text-align: center;
+  font-size: 6vw;
+  font-family: 'Roboto Mono', monospace;
+  width: 8vw;
+  height: 8vw;
+  border: 2px solid blue;
+}
+
+.game-panel-bottom {
+  display: flex;
+  width: 16vw;
+  height: 6vw;
+  border: 2px solid yellow;
+}
+
+.game-panel-start, .game-panel-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8vw;
+  height: 6vw;
+  border: 2px solid #000;
+}
+
+.game-panel-start button {
+  font-size: 1.3em;
+  background-color: lightblue;
+  padding: 0.5em;
+  margin-left: 30px;
+  border-radius: 50%;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+  color: #666;
+  margin-right: 40px;
+}
+
 
 @media only screen and (max-width:1200px) {
   /* For mobile phones: */
