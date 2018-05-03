@@ -70,8 +70,9 @@ body {
 
 .game-panel {
   position: absolute;
-  top: 8vw;
-  left: 8vw;
+  top: 50%;  /*8vw*/
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #ddd;
   width: 16vw;
   height: 16vw;
@@ -254,8 +255,8 @@ body {
   }
 
   .game-panel {
-    top: 12.5vw;
-    left: 12.5vw;
+    /*top: 12.5vw;
+    left: 12.5vw;*/
     width: 25vw;
     height: 25vw;
   }
@@ -267,9 +268,9 @@ body {
   }
 
   .game-panel-counter {
-    text-align: center;
+    /*text-align: center;*/
     font-size: 9.36vw;
-    font-family: 'Roboto Mono', monospace;
+    /*font-family: 'Roboto Mono', monospace;*/
     width: 12.5vw;
     height: 12.5vw;
     /*border: 2px solid blue;*/
@@ -306,14 +307,77 @@ body {
   .inner {
     width: 50vw;
     height: 50vw;
-    border-radius: 10px;
+  }
+
+  .top-left {
+    border-radius: 10px 0 0 0;
+    /*border-left: 1vw solid #000;
+    border-top: 1vw solid #000;
+    border-right: 0.5vw solid #000;
+    border-bottom: 0.5vw solid #000;*/
+  }
+
+  .top-right {
+    border-radius: 0 10px 0 0;
+    /*border-left: 0.5vw solid #000;
+    border-top: 1vw solid #000;
+    border-right: 1vw solid #000;
+    border-bottom: 0.5vw solid #000;*/
+  }
+
+  .bottom-left {
+    border-radius: 0 0 0 10px;
+    /*border-left: 1vw solid #000;
+    border-top: 0.5vw solid #000;
+    border-right: 0.5vw solid #000;
+    border-bottom: 1vw solid #000;*/
+  }
+
+  .bottom-right {
+    border-radius: 0 0 10px 0;
+    /*border-left: 0.5vw solid #000;
+    border-top: 0.5vw solid #000;
+    border-right: 1vw solid #000;
+    border-bottom: 1vw solid #000;*/
   }
 
   .game-panel {
-    top: 25vw;
-    left: 0;
-    width: 100vw;
+    /*top: 25vw;
+    left: 0;*/
+    width: 90vw;
     height: 50vw;
     border-radius: 10px;
+    border: 2px solid red;
+  }
+
+  .game-panel-top {
+    width: 90vw;
+    height: 30vw;
+    /*border: 2px solid red;*/
+  }
+
+  .game-panel-counter {
+    /*text-align: center;*/
+    font-size: 18.75vw;
+    /*font-family: 'Roboto Mono', monospace;*/
+    width: 25vw;
+    height: 25vw;
+    /*border: 2px solid blue;*/
+  }
+
+  .game-panel-counter span {
+    vertical-align: -20px;
+  }
+
+  .game-panel-bottom {
+    width: 90vw;
+    height: 20vw;
+    /*border: 2px solid yellow;*/
+  }
+
+  .game-panel-start, .game-panel-settings {
+    width: 45vw;
+    height: 20vw;
+    /*border: 2px solid #000;*/
   }
 }
