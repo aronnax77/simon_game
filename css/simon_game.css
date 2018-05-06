@@ -73,7 +73,7 @@ body {
   top: 50%;  /*8vw*/
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ddd;
+  background-color: lightyellow;
   width: 16vw;
   height: 16vw;
   border-radius: 100%;
@@ -172,10 +172,11 @@ body {
 }
 
 .modal-container {
-  width: 60%;
+  width: 300px;
   margin: 0px auto;
-  background-color: #fff;
-  border-radius: 2px;
+  border: 2px solid #666;
+  border-radius: 20px;
+  background-color: lightyellow;
   -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
           box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   -webkit-transition: all .3s ease;
@@ -185,9 +186,10 @@ body {
 }
 
 .modal-header h2 {
-  color: #42b983;
-  background-color: #333;
+  text-align: center;
   padding: 20px 30px;
+  color: #9f0f17;
+  font-family: 'Faster One', cursive;
 }
 
 .modal-body {
@@ -205,15 +207,14 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #42b983;
-  background-color: #333;
   padding: 0px 20px;
 }
 
 .modal-default-button {
   color: #fff;
+  padding: 0.5em;
   background-color: #42b983;
-  border-radius: 5px;
+  border-radius: 50%;
   margin-bottom: 20px;
 }
 

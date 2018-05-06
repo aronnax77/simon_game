@@ -26,7 +26,7 @@ var main = new Vue({
     bg2: "#9f0f17", // #c7202a
     bg3: "#cca707", // #e5c01f
     bg4: "#094a8f",  // #1d6abc
-    showModal: true
+    showModal: false
   },
   components: {
     "light-pad": LightPad
