@@ -17,7 +17,7 @@
 
   <!-- set up the Vue application -->
   <div id="simon-app" class="container">
-
+{{ $data }}
     <!-- display the four light pads with default background colours -->
     <light-pad :bg="bg1"
                class="top-left inner"
@@ -54,15 +54,36 @@
           @close="showModal = false">
 
      <!-- enter custom header in slot named 'header' -->
-     <h2 slot="header">My Custom Modal</h2>
+     <h2 slot="header">Simon Game</h2>
 
      <!-- enter custom content here in slot named 'body' -->
-     <p slot="body">This is the content of the custom modal</p>
+     <div slot="body">
+       <h4>Settings</h4>
+       <hr><br>
+       <h5>Levels</h5>
+       <br>
+       <input type="radio" id="easy" value="5" v-model="picked">
+       <label for="easy">  5</label>
+       <br>
+       <input type="radio" id="harder" value="10" v-model="picked">
+       <label for="harder"> 10</label>
+       <br>
+       <input type="radio" id="hard" value="20" v-model="picked">
+       <label for="hard"> 20</label>
+       <br>
+       <hr><br>
+       <h5>Mode</h5>
+       <br>
+       <input type="checkbox" id="strict" value="false" v-model="strict">
+       <label for="strict"> Strict</label>
+      </div>
 
      <!-- enter custom footer in slot named 'footer' -->
-     <h3 slot="footer">Custom Footer</h3>
+     <h3 slot="footer"></h3>
 
    </modal>
+
+
 
   </div>
 

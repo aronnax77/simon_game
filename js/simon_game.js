@@ -20,11 +20,13 @@ var main = new Vue({
   data: {
     duration: 2000,
     counter: 20,
+    picked: 10,
+    strict: false,
     bg1: "#00a74a", // #2fc170
     bg2: "#9f0f17", // #c7202a
     bg3: "#cca707", // #e5c01f
     bg4: "#094a8f",  // #1d6abc
-    showModal: false
+    showModal: true
   },
   components: {
     "light-pad": LightPad
