@@ -41,10 +41,10 @@
       </div>
       <div class="game-panel-bottom">
         <div class="game-panel-start">
-          <button class="start-button">Start</button>
+          <button class="start-button" @click="startGame">Start</button>
         </div>
         <div class="game-panel-settings">
-          <i class="material-icons md-48" @click="showModal = true">settings</i>
+          <i class="material-icons md-48" @click="showSettings">settings</i>
         </div>
       </div>
     </div>
@@ -61,13 +61,13 @@
        <hr><br>
        <h5>Levels</h5>
        <br>
-       <input type="radio" id="easy" value="5" v-model="picked">
+       <input type="radio" id="easy" value="5" v-model="level">
        <label for="easy">  5</label>
        <br>
-       <input type="radio" id="harder" value="10" v-model="picked">
+       <input type="radio" id="harder" value="10" v-model="level">
        <label for="harder"> 10</label>
        <br>
-       <input type="radio" id="hard" value="20" v-model="picked">
+       <input type="radio" id="hard" value="20" v-model="level">
        <label for="hard"> 20</label>
        <br>
        <hr><br>
@@ -82,7 +82,7 @@
 
    </modal>
 
-
+  <pre>{{ $data }}</pre>
 
   </div>
 

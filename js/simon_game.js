@@ -18,9 +18,12 @@ Vue.component('modal', {
 var main = new Vue({
   el: "#simon-app",
   data: {
+    enableGame: false,
+    userPlayEnabled: false,
     duration: 2000,
-    counter: 20,
-    picked: 10,
+    counter: "00",
+    level: 5,       // change to 10
+    sequence: [],
     strict: false,
     bg1: "#00a74a", // #2fc170
     bg2: "#9f0f17", // #c7202a
@@ -32,11 +35,50 @@ var main = new Vue({
     "light-pad": LightPad
   },
   methods: {
+    startGame: function() {
+      if(!this.gameEnabled) {
+        this.gameEnabled = true;
+        var count = 1;
+        this.setCounter(count);
+        this.generateSequence();
+        this.play();
+      }
+    },
+    play: function() {
+      var x = 0;
+      for(var i = 0; i < this.level; i++) {
+          this.activatePad(this.sequence[i]);
+          sleep(this.duration + 5);
+      }
+    },
+    setCounter: function(cnt) {
+      if(cnt < 10) {
+        this.counter = "0" + cnt;
+      } else {
+        this.counter = cnt;
+      }
+    },
+    generateSequence: function() {
+      var x = 0;
+      var temp;
+      while( x < this.level ) {
+        temp = Math.floor((Math.random() * 4)) + 1;
+        this.sequence.push(temp);
+        x++;
+      }
+    },
+    showSettings: function() {
+      if(!this.gameEnabled) {
+        this.showModal = true;
+      }
+    },
     userActivatePad: function(pad) {
-      var temp = this.duration;
-      this.duration = 200;
-      this.activatePad(pad);
-      this.duration = temp;
+      if(this.userPlayEnabled) {
+        var temp = this.duration;
+        this.duration = 200;
+        this.activatePad(pad);
+        this.duration = temp;
+      }
     },
     activatePad: function(pad) {
       switch(pad) {
@@ -72,4 +114,12 @@ var main = new Vue({
   }
 });
 
+
+function sleep(millis) {
+    var date = Date.now();
+    var curDate = null;
+    do {
+        curDate = Date.now();
+    } while (curDate-date < millis);
+}
 //snd6.play();
