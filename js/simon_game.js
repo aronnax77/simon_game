@@ -18,11 +18,12 @@ Vue.component('modal', {
 var main = new Vue({
   el: "#simon-app",
   data: {
-    enableGame: false,
-    userPlayEnabled: false,
-    duration: 2000,
+    nextInSequence: undefined,
+    compEnabled: false,         // computer play enabled?
+    userEnabled: false,         // user play enabled?
+    duration: 2000,             // duration of computer play
     counter: "00",
-    level: 5,       // change to 10
+    level: 5,             // initial value of level (change to 10)
     sequence: [],
     strict: false,
     bg1: "#00a74a", // #2fc170
@@ -36,8 +37,8 @@ var main = new Vue({
   },
   methods: {
     startGame: function() {
-      if(!this.gameEnabled) {
-        this.gameEnabled = true;
+      if(!this.compEnabled) {
+        this.compEnabled = true;
         var count = 1;
         this.setCounter(count);
         this.generateSequence();
@@ -45,11 +46,8 @@ var main = new Vue({
       }
     },
     play: function() {
-      var x = 0;
-      for(var i = 0; i < this.level; i++) {
-          this.activatePad(this.sequence[i]);
-          sleep(this.duration + 5);
-      }
+      /*this.activatePad(this.sequence[0]);*/
+      this.nextInSequence = 0;
     },
     setCounter: function(cnt) {
       if(cnt < 10) {
@@ -73,7 +71,7 @@ var main = new Vue({
       }
     },
     userActivatePad: function(pad) {
-      if(this.userPlayEnabled) {
+      if(this.userEnabled) {
         var temp = this.duration;
         this.duration = 200;
         this.activatePad(pad);
@@ -85,8 +83,12 @@ var main = new Vue({
         case 1:
           this.bg1 = "#2fc170";
           snd1.play();
+          console.log("pink");
           setTimeout(function() {
             main.bg1 = "#00a74a";
+            if(main.compEnabled && main.nextInSequence < main.level) {
+              main.nextInSequence++;
+            }
           }, this.duration);
           break;
         case 2:
@@ -94,6 +96,9 @@ var main = new Vue({
           snd2.play();
           setTimeout(function() {
             main.bg2 = "#9f0f17";
+            if(main.compEnabled && main.nextInSequence < main.level) {
+              main.nextInSequence++;
+            }
           }, this.duration);
           break;
         case 3:
@@ -101,6 +106,9 @@ var main = new Vue({
           snd3.play();
           setTimeout(function() {
             main.bg3 = "#cca707";
+            if(main.compEnabled && main.nextInSequence < main.level) {
+              main.nextInSequence++;
+            }
           }, this.duration);
           break;
         case 4:
@@ -108,8 +116,16 @@ var main = new Vue({
           snd4.play();
           setTimeout(function() {
             main.bg4 = "#094a8f";
+            if(main.compEnabled && main.nextInSequence < main.level) {
+              main.nextInSequence++;
+            }
           }, this.duration);
       }
+    }
+  },
+  watch: {
+    nextInSequence: function() {
+      this.activatePad(this.sequence[this.nextInSequence]);
     }
   }
 });
