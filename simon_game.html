@@ -41,7 +41,7 @@
       </div>
       <div class="game-panel-bottom">
         <div class="game-panel-start">
-          <button class="start-button" @click="startGame">{{ state }}</button>
+          <button class="start-button" :class="{btnlightblue: btnblue, btnred: btnred}" @click="startResetGame">{{ state }}</button>
         </div>
         <div class="game-panel-settings">
           <i class="material-icons md-48" @click="showSettings">settings</i>

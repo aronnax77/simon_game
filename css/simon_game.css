@@ -9,6 +9,7 @@
 
 body {
   background-color: #ddd;
+  /*background-image: url(../images/pattern.png);*/
 }
 
 .title {
@@ -127,10 +128,18 @@ body {
 
 .game-panel-start button {
   font-size: 1.3em;
-  background-color: lightblue;
   padding: 0.3em;
   margin-left: 30px;
   border-radius: 50%;
+}
+
+.btnlightblue {
+  background-color: lightblue;
+}
+
+.btnred {
+  color: #fff;
+  background-color: red;
 }
 
 .game-panel-start button:hover {

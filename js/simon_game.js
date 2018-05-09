@@ -34,6 +34,8 @@ var main = new Vue({
     bg2: "#9f0f17", // #c7202a
     bg3: "#cca707", // #e5c01f
     bg4: "#094a8f",  // #1d6abc
+    btnblue: true,
+    btnred: false,
     showModal: false,
     error: false,
     success: false
@@ -42,7 +44,7 @@ var main = new Vue({
     "light-pad": LightPad
   },
   methods: {
-    startGame: function() {
+    startResetGame: function() {
       if(!this.gameEnabled) {
         this.settingsEnabled = false;
         this.compEnabled = true;
@@ -54,7 +56,25 @@ var main = new Vue({
       }
     },
     reset: function() {
-      alert("reset");
+      this.nextInSequence = undefined;
+      this.settingsEnabled = true;
+      this.compEnabled = false;
+      this.userEnabled = false;
+      this.gameEnabled = false;
+      this.state = "Start";
+      this.duration = 1200;
+      this.counter = "00";
+      this.gameSequence = [];
+      this.userSequence = [];
+      this.bg1 = "#00a74a";
+      this.bg2 = "#9f0f17";
+      this.bg3 = "#cca707";
+      this.bg4 = "#094a8f";
+      this.btnblue = true;
+      this.btnred = false;
+      this.showModal = false;
+      this.error = false;
+      this.success = false;
     },
     compPlay: function() {
       var count = 1;
@@ -147,7 +167,7 @@ var main = new Vue({
       }
       if(main.userSequence.length == main.counter) {
         main.userEnabled = false;
-        if(!main.error && main.counter < main.level) {
+        if(!main.error && parseInt(main.counter, 10) < parseInt(main.level, 10)) {
           main.setCounter(parseInt(main.counter, 10) + 1);
           main.compEnabled = true;
           setTimeout(function() {
@@ -156,8 +176,10 @@ var main = new Vue({
           }, 1200);
         }
       }
-      if(main.userSequence.length === main.level) {
+      if(main.userSequence.length === parseInt(main.level, 10)) {
         main.success = true;
+        main.btnlightblue = false;
+        main.btnred = true;
       }
     },
     checkUserChoice: function(num) {
