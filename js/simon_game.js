@@ -19,12 +19,14 @@ var main = new Vue({
   el: "#simon-app",
   data: {
     nextInSequence: undefined,
+    settingsEnabled: true,
     compEnabled: false,         // computer play enabled?
     userEnabled: false,         // user play enabled?
-    duration: 2000,             // duration of computer play
+    duration: 1200,             // duration of computer play
     counter: "00",
-    level: 5,             // initial value of level (change to 10)
-    sequence: [],
+    level: 3,                   // initial value of level (change to 10)
+    gameSequence: [],           // users sequence
+    userSequence: [],
     strict: false,
     bg1: "#00a74a", // #2fc170
     bg2: "#9f0f17", // #c7202a
@@ -38,15 +40,22 @@ var main = new Vue({
   methods: {
     startGame: function() {
       if(!this.compEnabled) {
+        this.settingsEnabled = false;
         this.compEnabled = true;
-        var count = 1;
-        this.setCounter(count);
-        this.generateSequence();
-        this.play();
+        this.compPlay();
       }
     },
-    play: function() {
-      /*this.activatePad(this.sequence[0]);*/
+    compPlay: function() {
+      var count = 1;
+      this.setCounter(count);
+      this.generateSequence();
+      this.playSequence();
+    },
+    userPlay: function() {
+      alert("user play");
+      this.userEnabled = true;
+    },
+    playSequence: function() {
       this.nextInSequence = 0;
     },
     setCounter: function(cnt) {
@@ -61,19 +70,19 @@ var main = new Vue({
       var temp;
       while( x < this.level ) {
         temp = Math.floor((Math.random() * 4)) + 1;
-        this.sequence.push(temp);
+        this.gameSequence.push(temp);
         x++;
       }
     },
     showSettings: function() {
-      if(!this.gameEnabled) {
+      if(this.settingsEnabled) {
         this.showModal = true;
       }
     },
     userActivatePad: function(pad) {
       if(this.userEnabled) {
         var temp = this.duration;
-        this.duration = 200;
+        this.duration = 100;
         this.activatePad(pad);
         this.duration = temp;
       }
@@ -86,9 +95,7 @@ var main = new Vue({
           console.log("pink");
           setTimeout(function() {
             main.bg1 = "#00a74a";
-            if(main.compEnabled && main.nextInSequence < main.level) {
-              main.nextInSequence++;
-            }
+            main.handleCase(1);
           }, this.duration);
           break;
         case 2:
@@ -96,9 +103,7 @@ var main = new Vue({
           snd2.play();
           setTimeout(function() {
             main.bg2 = "#9f0f17";
-            if(main.compEnabled && main.nextInSequence < main.level) {
-              main.nextInSequence++;
-            }
+            main.handleCase(2);
           }, this.duration);
           break;
         case 3:
@@ -106,9 +111,7 @@ var main = new Vue({
           snd3.play();
           setTimeout(function() {
             main.bg3 = "#cca707";
-            if(main.compEnabled && main.nextInSequence < main.level) {
-              main.nextInSequence++;
-            }
+            main.handleCase(3);
           }, this.duration);
           break;
         case 4:
@@ -116,16 +119,32 @@ var main = new Vue({
           snd4.play();
           setTimeout(function() {
             main.bg4 = "#094a8f";
-            if(main.compEnabled && main.nextInSequence < main.level) {
-              main.nextInSequence++;
-            }
+            main.handleCase(4);
           }, this.duration);
       }
+    },
+    handleCase: function(caseNum) {
+      if(main.compEnabled && main.nextInSequence < main.level) {
+        main.nextInSequence++;
+      } else if(main.userEnabled && main.userSequence.length < main.level) {
+        main.userSequence.push(caseNum);
+      }
+      if(main.nextInSequence === main.level) {
+        main.nextInSequence = undefined;
+        main.compEnabled = false;
+        main.userPlay();
+      }
+      if(main.userSequence.length === main.level) {
+        main.userEnabled = false;
+      }
+    },
+    checkUserChoice: function() {
+      
     }
   },
   watch: {
     nextInSequence: function() {
-      this.activatePad(this.sequence[this.nextInSequence]);
+        this.activatePad(this.gameSequence[this.nextInSequence]);
     }
   }
 });
