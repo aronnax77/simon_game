@@ -37,11 +37,11 @@
 
     <div class="game-panel">
       <div class="game-panel-top">
-        <div class="game-panel-counter"><span>{{ counter }}</span></div>
+        <div class="game-panel-counter" :class="{red: error, green: success}"><span>{{ counter }}</span></div>
       </div>
       <div class="game-panel-bottom">
         <div class="game-panel-start">
-          <button class="start-button" @click="startGame">Start</button>
+          <button class="start-button" @click="startGame">{{ state }}</button>
         </div>
         <div class="game-panel-settings">
           <i class="material-icons md-48" @click="showSettings">settings</i>

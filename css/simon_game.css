@@ -97,6 +97,14 @@ body {
   /*border: 2px solid blue;*/
 }
 
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
 .game-panel-counter span {
   vertical-align: -30px;
 }
