@@ -79,6 +79,7 @@ body {
   height: 16vw;
   border-radius: 100%;
   border: 0.5vw solid #000;
+  pointer-events: none;
 }
 
 .game-panel-top {
@@ -131,6 +132,7 @@ body {
   padding: 0.3em;
   margin-left: 30px;
   border-radius: 50%;
+  pointer-events: auto;
 }
 
 .btnlightblue {
@@ -151,6 +153,10 @@ body {
   color: #666;
   margin-right: 40px;
   text-shadow: 2px 2px #aaa;
+}
+
+.material-icons {
+  pointer-events: auto;
 }
 
 .material-icons:hover {
