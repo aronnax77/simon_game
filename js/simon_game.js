@@ -26,7 +26,7 @@ var main = new Vue({
     state: "Start",
     duration: 1200,             // duration of computer play
     counter: "00",
-    level: 3,                   // initial value of level (change to 10)
+    level: 5,                   // initial value of level (change to 10)
     gameSequence: [],           // users sequence
     userSequence: [],
     strict: false,
@@ -122,7 +122,6 @@ var main = new Vue({
         case 1:
           this.bg1 = "#2fc170";
           snd1.play();
-          console.log("pink");
           setTimeout(function() {
             main.bg1 = "#00a74a";
             main.handleCase(1);
@@ -155,7 +154,7 @@ var main = new Vue({
     },
     handleCase: function(caseNum) {
       if(main.compEnabled && main.nextInSequence < main.counter) {
-        main.nextInSequence++;
+          main.nextInSequence++;
       } else if(main.userEnabled && main.userSequence.length < main.counter) {
         main.userSequence.push(caseNum);
         main.checkUserChoice(caseNum);
@@ -187,11 +186,15 @@ var main = new Vue({
         main.error = true;
         main.userEnabled = false;
         main.compEnabled = true;
-        setTimeout(function() {
-          main.playSequence();
-          main.userEnabled = true;
-          main.userSequence = [];
-        }, 1500);
+        if(main.strict) {
+          main.gameSequence = [];
+          main.generateSequence();
+        }
+          setTimeout(function() {
+            main.playSequence();
+            main.userEnabled = true;
+            main.userSequence = [];
+          }, 1500);
       } else {
         if(main.error) {
           main.error = false;
@@ -201,7 +204,9 @@ var main = new Vue({
   },
   watch: {
     nextInSequence: function() {
-        this.activatePad(this.gameSequence[this.nextInSequence]);
+      setTimeout(function() {
+        main.activatePad(main.gameSequence[main.nextInSequence]);
+      }, 100);
     }
   }
 });
