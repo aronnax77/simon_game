@@ -1,20 +1,29 @@
-var snd1 = new Audio("audio/simonSound1.mp3");
-var snd2 = new Audio("audio/simonSound2.mp3");
-var snd3 = new Audio("audio/simonSound3.mp3");
-var snd4 = new Audio("audio/simonSound4.mp3");
-var snd5 = new Audio("audio/pipe9.wav");
-var snd6 = new Audio("audio/record-scratch-short.wav");
+/*   Author: Richard Myatt
+     Date: 10 May 2018
+
+     Simon Says Game.  An exercise for freecodecamp.
+*/
+
+// Audio sound files provided by freecodecamp
+var snd1 = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3");
+var snd2 = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3");
+var snd3 = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3");
+var snd4 = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
 
 
+// component for light pad
 var LightPad = {
   template: "#light-pad",
   props: ["bg"]
 };
 
+
+// custom modal component registered globally
 Vue.component('modal', {
       template: '#modal'
 });
 
+// main Vue.js application code
 var main = new Vue({
   el: "#simon-app",
   data: {
@@ -40,21 +49,25 @@ var main = new Vue({
     error: false,
     success: false
   },
+  // register local components
   components: {
     "light-pad": LightPad
   },
+  // application methods
   methods: {
+    // this method is run when the start/restart button is clicked
     startResetGame: function() {
       if(!this.gameEnabled) {
         this.settingsEnabled = false;
         this.compEnabled = true;
         this.gameEnabled = true;
         this.state = "Reset";
-        this.compPlay();
+        this.compPlay();    // uses helper method to start computer play
       } else {
-        this.reset();
+        this.reset();       // use helper method to reset game
       }
     },
+    // helper method to reset game (see above)
     reset: function() {
       this.nextInSequence = undefined;
       this.settingsEnabled = true;
@@ -76,18 +89,22 @@ var main = new Vue({
       this.error = false;
       this.success = false;
     },
+    // helper method to control computer play
     compPlay: function() {
       var count = 1;
       this.setCounter(count);
       this.generateSequence();
       this.playSequence();
     },
+    // helper method called by handleCase
     userPlay: function() {
       this.userEnabled = true;
     },
+    // helper method called by compPlay
     playSequence: function() {
       this.nextInSequence = 0;
     },
+    // helper method called by compPlay
     setCounter: function(cnt) {
       if(cnt < 10) {
         this.counter = "0" + cnt;
@@ -95,6 +112,7 @@ var main = new Vue({
         this.counter = cnt;
       }
     },
+    // helper method called by compPlay
     generateSequence: function() {
       var x = 0;
       var temp;
@@ -104,11 +122,13 @@ var main = new Vue({
         x++;
       }
     },
+    // method called when setting icon clicked
     showSettings: function() {
       if(this.settingsEnabled) {
         this.showModal = true;
       }
     },
+    // method called when user click on light pad
     userActivatePad: function(pad) {
       if(this.userEnabled) {
         var temp = this.duration;
@@ -117,6 +137,7 @@ var main = new Vue({
         this.duration = temp;
       }
     },
+    // main controlling method for light pad
     activatePad: function(pad) {
       switch(pad) {
         case 1:
@@ -152,6 +173,7 @@ var main = new Vue({
           }, this.duration);
       }
     },
+    // helper method called by activatePad
     handleCase: function(caseNum) {
       if(main.compEnabled && main.nextInSequence < main.counter) {
           main.nextInSequence++;
@@ -181,6 +203,7 @@ var main = new Vue({
         main.btnred = true;
       }
     },
+    // helper method called by handleCase
     checkUserChoice: function(num) {
       if(num !== main.gameSequence[main.userSequence.length - 1]) {
         main.error = true;
@@ -202,6 +225,7 @@ var main = new Vue({
       }
     }
   },
+  // Vue.js watch method to run light sequence
   watch: {
     nextInSequence: function() {
       setTimeout(function() {

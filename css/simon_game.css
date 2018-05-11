@@ -1,6 +1,14 @@
+/*   Author: Richard Myatt
+     Date: 10 May 2018
+
+     Simon Says Game.  An exercise for freecodecamp.
+*/
+
 @import url('https://fonts.googleapis.com/css?family=Faster+One');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
 
+
+/* General styling starts */
 * {
   padding: 0;
   margin: 0;
@@ -9,7 +17,7 @@
 
 body {
   background-color: #ddd;
-  background-image: url(../images/pattern01.png);
+  background-image: url(https://rawgit.com/aronnax77/simon_game/master/images/pattern01.png);
 }
 
 .title {
@@ -26,7 +34,9 @@ body {
   height: 32vw;
   margin: 1.5vw auto;
 }
+/* General styling ends */
 
+/* styling of light pads starts */
 .inner {
   float: left;
   width: 16vw;
@@ -68,10 +78,13 @@ body {
   border-right: 1vw solid #000;
   border-bottom: 1vw solid #000;
 }
+/* styling of light pads ends */
 
+
+/* styling of game panel starts */
 .game-panel {
   position: absolute;
-  top: 50%;  /*8vw*/
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: lightyellow;
@@ -87,7 +100,6 @@ body {
   justify-content: center;
   width: 16vw;
   height: 8vw;
-  /*border: 2px solid red;*/
 }
 
 .game-panel-counter {
@@ -96,7 +108,6 @@ body {
   font-family: 'Roboto Mono', monospace;
   width: 8vw;
   height: 8vw;
-  /*border: 2px solid blue;*/
 }
 
 .red {
@@ -115,7 +126,6 @@ body {
   display: flex;
   width: 16vw;
   height: 6vw;
-  /*border: 2px solid yellow;*/
 }
 
 .game-panel-start, .game-panel-settings {
@@ -124,7 +134,6 @@ body {
   align-items: center;
   width: 8vw;
   height: 6vw;
-  /*border: 2px solid #000;*/
 }
 
 .game-panel-start button {
@@ -175,11 +184,10 @@ body {
   75% {transform: rotate(20deg);}
   100% {transform: rotate(0deg);}
 }
+/* styling of game panel ends */
 
 
-
-
-/* modal components */
+/* styling of modal starts */
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -259,9 +267,10 @@ body {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+/* styling of modal ends */
 
 
-
+/* styling for responsive design starts */
 @media only screen and (max-width:1500px) {
   /* For mobile phones: x 1.5625 */
   .title {
@@ -279,8 +288,6 @@ body {
   }
 
   .game-panel {
-    /*top: 12.5vw;
-    left: 12.5vw;*/
     width: 25vw;
     height: 25vw;
   }
@@ -288,16 +295,12 @@ body {
   .game-panel-top {
     width: 25vw;
     height: 12.5vw;
-    /*border: 2px solid red;*/
   }
 
   .game-panel-counter {
-    /*text-align: center;*/
     font-size: 9.36vw;
-    /*font-family: 'Roboto Mono', monospace;*/
     width: 12.5vw;
     height: 12.5vw;
-    /*border: 2px solid blue;*/
   }
 
   .game-panel-counter span {
@@ -307,13 +310,11 @@ body {
   .game-panel-bottom {
     width: 25vw;
     height: 9.36vw;
-    /*border: 2px solid yellow;*/
   }
 
   .game-panel-start, .game-panel-settings {
     width: 12.5vw;
     height: 9.36vw;
-    /*border: 2px solid #000;*/
   }
 }
 
@@ -335,39 +336,21 @@ body {
 
   .top-left {
     border-radius: 10px 0 0 0;
-    /*border-left: 1vw solid #000;
-    border-top: 1vw solid #000;
-    border-right: 0.5vw solid #000;
-    border-bottom: 0.5vw solid #000;*/
   }
 
   .top-right {
     border-radius: 0 10px 0 0;
-    /*border-left: 0.5vw solid #000;
-    border-top: 1vw solid #000;
-    border-right: 1vw solid #000;
-    border-bottom: 0.5vw solid #000;*/
   }
 
   .bottom-left {
     border-radius: 0 0 0 10px;
-    /*border-left: 1vw solid #000;
-    border-top: 0.5vw solid #000;
-    border-right: 0.5vw solid #000;
-    border-bottom: 1vw solid #000;*/
   }
 
   .bottom-right {
     border-radius: 0 0 10px 0;
-    /*border-left: 0.5vw solid #000;
-    border-top: 0.5vw solid #000;
-    border-right: 1vw solid #000;
-    border-bottom: 1vw solid #000;*/
   }
 
   .game-panel {
-    /*top: 25vw;
-    left: 0;*/
     width: 90vw;
     height: 50vw;
     border-radius: 10px;
@@ -377,16 +360,12 @@ body {
   .game-panel-top {
     width: 90vw;
     height: 30vw;
-    /*border: 2px solid red;*/
   }
 
   .game-panel-counter {
-    /*text-align: center;*/
     font-size: 18.75vw;
-    /*font-family: 'Roboto Mono', monospace;*/
     width: 25vw;
     height: 25vw;
-    /*border: 2px solid blue;*/
   }
 
   .game-panel-counter span {
@@ -396,12 +375,15 @@ body {
   .game-panel-bottom {
     width: 90vw;
     height: 20vw;
-    /*border: 2px solid yellow;*/
   }
 
   .game-panel-start, .game-panel-settings {
     width: 45vw;
     height: 20vw;
-    /*border: 2px solid #000;*/
+  }
+
+  .modal-mask {
+    padding-top: 5px;
   }
 }
+/* styling for responsive design ends */

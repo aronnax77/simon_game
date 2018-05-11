@@ -1,3 +1,9 @@
+<!-- Author: Richard Myatt
+     Date: 10 May 2018
+
+     Simon Says Game.  An exercise for freecodecamp.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +41,8 @@
                @user="userActivatePad(4)">
                </light-pad>
 
+
+    <!-- display the central game panel -->
     <div class="game-panel">
       <div class="game-panel-top">
         <div class="game-panel-counter" :class="{red: error, green: success}"><span>{{ counter }}</span></div>
@@ -49,6 +57,8 @@
       </div>
     </div>
 
+
+    <!-- prepare the custom modal for settings -->
     <modal v-if="showModal"
           @close="showModal = false">
 
@@ -82,9 +92,8 @@
 
    </modal>
 
-  <!--<pre>{{ $data }}</pre>-->
 
-  </div>
+ </div><!-- Vue application closed -->
 
 
   <!-- template for a light pad -->
@@ -95,6 +104,7 @@
   </template>
 
 
+  <!-- template for modal -->
   <template id="modal">
 
     <!-- wrap in transition tags to allow animation -->
